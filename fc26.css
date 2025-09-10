@@ -44,7 +44,7 @@ footer[data-cvent-id*="EventFooter"] {
 }
 
 /* ===== Left pinned strip (using the SVG with built-in animation) ===== */
-[data-color-style-scheme="content1-background"]>div[class^="Classes__sectionContainer"][style*="0, 40, 85"]::before {
+[data-color-style-scheme="content1-background"]>div[class^="Classes__sectionContainer"][style*="0, 40, 85"]:not(:has([data-cvent-id*="WebsiteNavigator"]))::before {
 	content: "";
 	position: absolute;
 	inset: 0 auto 0 0;
@@ -73,14 +73,14 @@ footer[data-cvent-id*="EventFooter"] {
 }
 
 /* Keep inner content above strips */
-[data-color-style-scheme="content1-background"]>div[class^="Classes__sectionContainer"][style*="0, 40, 85"]>* {
+[data-color-style-scheme="content1-background"]>div[class^="Classes__sectionContainer"][style*="0, 40, 85"]:not(:has([data-cvent-id*="WebsiteNavigator"]))>* {
 	position: relative;
 	z-index: 1;
 }
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
-	[data-color-style-scheme="content1-background"]>div[class^="Classes__sectionContainer"][style*="0, 40, 85"] {
+	[data-color-style-scheme="content1-background"]>div[class^="Classes__sectionContainer"][style*="0, 40, 85"]:not(:has([data-cvent-id*="WebsiteNavigator"])) {
 		--flower-size: 96px;
 		--flower-gap: 8px;
 		--flower-top: 38%;
@@ -93,3 +93,4 @@ footer[data-cvent-id*="EventFooter"] {
 	padding-left: 2em !important;
 	white-space: nowrap;
 }
+
