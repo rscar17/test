@@ -97,20 +97,8 @@ footer[data-cvent-id*="EventFooter"] {
 [data-color-style-scheme="content1-background"] > div[class^="Classes__sectionContainer"]::after {
     display: none !important;
 }
-/* Completely remove right strip from ALL sections first */
-[data-color-style-scheme="content1-background"] div::after {
-    display: none !important;
-    content: none !important;
-    width: 0 !important;
-    background: none !important;
-}
 
-/* Then re-add it ONLY to the hero section if you want it there */
-[data-color-style-scheme="content1-background"] > div[class^="Classes__sectionContainer"][style*="0, 40, 85"]:not(:has([data-cvent-id*="WebsiteNavigator"]))::after {
-    display: block !important;
-    content: "" !important;
-    /* your existing right strip styles here */
-}
+
 
 
 
