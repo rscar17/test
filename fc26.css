@@ -93,6 +93,10 @@ footer[data-cvent-id*="EventFooter"] {
 	padding-left: 2em !important;
 	white-space: nowrap;
 }
+/* Force remove any right strip that might still appear */
+[data-color-style-scheme="content1-background"] > div[class^="Classes__sectionContainer"]::after {
+    display: none !important;
+}
 
 
 
