@@ -59,7 +59,7 @@ footer[data-cvent-id*="EventFooter"] {
 
 /* ===== Right pinned strip (with spinning flower - opposite direction) ===== */
 [data-color-style-scheme="content1-background"]
-> div[class^="Classes__sectionContainer"][style*="0, 40, 85"]::after {
+> div[class^="Classes__sectionContainer"][style*="0, 40, 85"]:not(:has([data-cvent-id*="WebsiteNavigator"]))::after {
   content: "";
   position: absolute;
   inset: 0 0 0 auto;
@@ -93,5 +93,6 @@ footer[data-cvent-id*="EventFooter"] {
 	padding-left: 2em !important;
 	white-space: nowrap;
 }
+
 
 
