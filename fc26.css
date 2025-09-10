@@ -16,7 +16,7 @@ footer[data-cvent-id*="EventFooter"] {
 }
 
 /* ===== Hero section (blue) base ===== */
-[data-color-style-scheme="content1-background"]>div[class^="Classes__sectionContainer"][style*="0, 40, 85"] {
+[data-color-style-scheme="content1-background"]>div[class^="Classes__sectionContainer"][style*="0, 40, 85"]:not(:has([data-cvent-id*="WebsiteNavigator"])) {
 	/* alignment knobs — tweak these three to dial the rotating flower */
 	--hero-max: 1024px;
 	/* content max-width from your markup */
@@ -93,4 +93,5 @@ footer[data-cvent-id*="EventFooter"] {
 	padding-left: 2em !important;
 	white-space: nowrap;
 }
+
 
