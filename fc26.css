@@ -94,6 +94,12 @@ footer[data-cvent-id*="EventFooter"] {
 	white-space: nowrap;
 }
 
+/* ===== Target only the footer (last blue section) ===== */
+[data-color-style-scheme="content1-background"]:last-of-type > .Classes__sectionContainer___ahgHE[style*="rgb(0, 40, 85)"]::before,
+[data-color-style-scheme="content1-background"]:last-of-type > .Classes__sectionContainer___ahgHE[style*="rgb(0, 40, 85)"]::after {
+    display: none !important;
+    content: none !important;
+}
 
 
 
