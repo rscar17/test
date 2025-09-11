@@ -93,6 +93,22 @@ footer[data-cvent-id*="EventFooter"] {
 	padding-left: 2em !important;
 	white-space: nowrap;
 }
+/* Remove decorative strips from footer sections */
+.Classes__sectionContainer___ahgHE[style*="background-color: rgb(0, 40, 85)"]::before,
+.Classes__sectionContainer___ahgHE[style*="background-color: rgb(0, 40, 85)"]::after {
+    display: none !important;
+}
+
+/* Re-apply strips ONLY to the hero section (which should have more specific identifiers) */
+[data-color-style-scheme="content1-background"] > div[class^="Classes__sectionContainer"][style*="0, 40, 85"]:not(:has([data-cvent-id*="WebsiteNavigator"]))::before {
+    display: block !important;
+    /* your existing left strip styles */
+}
+
+[data-color-style-scheme="content1-background"] > div[class^="Classes__sectionContainer"][style*="0, 40, 85"]:not(:has([data-cvent-id*="WebsiteNavigator"]))::after {
+    display: block !important;
+    /* your existing right strip styles */
+}
 
 
 
