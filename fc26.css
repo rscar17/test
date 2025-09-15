@@ -96,6 +96,157 @@ footer[data-cvent-id*="EventFooter"] {
 
 
 
+<script>
+// Wait for the agenda to load
+function redesignAgenda() {
+    const agendaContainer = document.querySelector('ul[style*="background-color: rgb(100, 204, 201)"]');
+    
+    if (!agendaContainer) {
+        setTimeout(redesignAgenda, 500);
+        return;
+    }
+    
+    // Extract all agenda data
+    const agendaItems = [];
+    const items = agendaContainer.querySelectorAll('li');
+    
+    items.forEach(item => {
+        const title = item.querySelector('div[style*="font-family: customQuicksand"][style*="color: rgb(255, 255, 255)"]')?.textContent || '';
+        const time = item.querySelector('div[style*="color: rgb(245, 78, 45)"]')?.textContent || '';
+        const location = item.querySelector('div[style*="color: rgb(243, 230, 205)"]')?.textContent || '';
+        
+        if (title) {
+            agendaItems.push({ title, time, location });
+        }
+    });
+    
+    // Create new container
+    const newAgenda = document.createElement('div');
+    newAgenda.className = 'custom-agenda-container';
+    newAgenda.innerHTML = `
+        <style>
+            .custom-agenda-container {
+                padding: 20px;
+                background: white;
+                border-radius: 12px;
+            }
+            .custom-agenda-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+            }
+            .custom-agenda-card {
+                background: linear-gradient(135deg, #64ccc9 0%, #5ab5b3 100%);
+                border-radius: 12px;
+                padding: 20px;
+                color: white;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                transition: transform 0.2s;
+            }
+            .custom-agenda-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+            }
+            .custom-agenda-title {
+                font-size: 1.25rem;
+                font-weight: bold;
+                margin-bottom: 10px;
+                color: #002855;
+            }
+            .custom-agenda-time {
+                font-size: 1rem;
+                color: #f54e2d;
+                margin-bottom: 5px;
+                font-weight: 600;
+            }
+            .custom-agenda-location {
+                font-size: 0.9rem;
+                color: #f3e6cd;
+            }
+            /* Alternative Timeline Design */
+            .custom-timeline {
+                position: relative;
+                padding: 20px;
+            }
+            .custom-timeline-item {
+                display: flex;
+                margin-bottom: 30px;
+                position: relative;
+            }
+            .custom-timeline-time {
+                min-width: 150px;
+                text-align: right;
+                padding-right: 30px;
+                color: #f54e2d;
+                font-weight: bold;
+            }
+            .custom-timeline-content {
+                flex: 1;
+                background: white;
+                padding: 15px;
+                border-radius: 8px;
+                border-left: 4px solid #64ccc9;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .custom-timeline-title {
+                color: #002855;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+            .custom-timeline-location {
+                color: #666;
+                font-size: 0.9rem;
+            }
+        </style>
+    `;
+    
+    // Choose your preferred layout:
+    
+    // OPTION 1: Card Grid Layout
+    const gridHtml = `
+        <div class="custom-agenda-grid">
+            ${agendaItems.map(item => `
+                <div class="custom-agenda-card">
+                    <div class="custom-agenda-title">${item.title}</div>
+                    <div class="custom-agenda-time">${item.time}</div>
+                    <div class="custom-agenda-location">${item.location}</div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+    
+    // OPTION 2: Modern Timeline
+    const timelineHtml = `
+        <div class="custom-timeline">
+            ${agendaItems.map(item => `
+                <div class="custom-timeline-item">
+                    <div class="custom-timeline-time">${item.time}</div>
+                    <div class="custom-timeline-content">
+                        <div class="custom-timeline-title">${item.title}</div>
+                        <div class="custom-timeline-location">${item.location}</div>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+    
+    // Add your chosen layout (change this to timelineHtml if you prefer that)
+    newAgenda.innerHTML += gridHtml;
+    
+    // Replace the old agenda with the new one
+    agendaContainer.parentElement.replaceChild(newAgenda, agendaContainer);
+}
+
+// Run when page loads
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', redesignAgenda);
+} else {
+    redesignAgenda();
+}
+
+// Also run when navigating between pages in Cvent
+window.addEventListener('popstate', redesignAgenda);
+			  </script>
 
 
 
