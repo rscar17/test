@@ -93,6 +93,29 @@ footer[data-cvent-id*="EventFooter"] {
 	padding-left: 2em !important;
 	white-space: nowrap;
 }
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const observer = new MutationObserver(function(mutations) {
+    const dialog = document.querySelector('[role="dialog"][aria-label="navigation"]');
+    if (dialog) {
+      dialog.style.transform = 'none';
+      dialog.style.animation = 'none';
+      dialog.style.transition = 'none';
+      
+      // Kill parent animations too
+      let parent = dialog.parentElement;
+      while (parent) {
+        parent.style.transform = 'none';
+        parent.style.animation = 'none';
+        parent.style.transition = 'none';
+        parent = parent.parentElement;
+      }
+    }
+  });
+  
+  observer.observe(document.body, { childList: true, subtree: true });
+});
+</script>
 
 
 
